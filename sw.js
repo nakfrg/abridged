@@ -1,11 +1,11 @@
 /* Abridged service worker — stale-while-revalidate app shell, offline-capable. */
 /* Bump VERSION and the ?v= query in index.html together whenever app.css/app.js change. */
-const VERSION = 'abridged-v8';
+const VERSION = 'abridged-v9';
 const SHELL = [
   './',
   './index.html',
-  './app.css?v=8',
-  './app.js?v=8',
+  './app.css?v=9',
+  './app.js?v=9',
   './manifest.webmanifest',
   './icons/icon-180.png',
   './icons/icon-192.png',

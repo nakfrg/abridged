@@ -300,7 +300,8 @@ svg {
   letter-spacing: .1em;
   color: var(--ink-mute);
 }
-.grid { row-gap: 6px; }
+/* column-gap keeps the circles apart on narrow screens, where each one fills its track */
+.grid { row-gap: 6px; column-gap: 4px; }
 
 /* Square by aspect-ratio, capped and centred in its track — a fixed height with a
    fluid 1fr width would go oval as the viewport resizes, and collide when wide. */
