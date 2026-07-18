@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Abridged — a one sentence journal</title>
+<meta name="description" content="Abridged is a one sentence journal. Write a single line each day, and keep it.">
+<meta name="theme-color" content="#f5f5f2">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Abridged">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon-192.png">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap">
+<link rel="stylesheet" href="app.css?v=7">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- ── sidebar / header brand ─────────────────────────────── -->
+  <header class="topbar">
+    <a class="brand" href="#write" data-nav="write">
+      <img class="brand-mark" src="icons/icon-192.png" alt="" width="34" height="34">
+      <span class="brand-name">Abridged</span>
+    </a>
+
+    <nav class="rail" aria-label="Sections">
+      <button class="rail-btn" data-nav="write" aria-current="page">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h9M3 12h6M3 17h5"/><path d="M20.4 8.6 13 16l-3.2.8L10.6 13.6 18 6.2a1.7 1.7 0 0 1 2.4 2.4Z"/></svg>
+        <span>Write</span>
+      </button>
+      <button class="rail-btn" data-nav="calendar">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.6"/><path d="M3.5 9.6h17M8 3.4v3.2M16 3.4v3.2"/></svg>
+        <span>Calendar</span>
+      </button>
+      <button class="rail-btn" data-nav="journal">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.6C10.3 5.3 8.3 4.7 5.6 4.7a1 1 0 0 0-1.1 1v11.5a1 1 0 0 0 1.1 1c2.7 0 4.7.6 6.4 1.9 1.7-1.3 3.7-1.9 6.4-1.9a1 1 0 0 0 1.1-1V5.7a1 1 0 0 0-1.1-1c-2.7 0-4.7.6-6.4 1.9Z"/><path d="M12 6.6v12.5"/></svg>
+        <span>Journal</span>
+      </button>
+    </nav>
+
+    <button class="icon-btn settings-btn" id="settingsOpen" aria-label="Settings">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="3.1"/><path d="M19.2 14.6a1.5 1.5 0 0 0 .3 1.7l.1.1a1.8 1.8 0 1 1-2.6 2.6l-.1-.1a1.5 1.5 0 0 0-2.6 1.1v.3a1.8 1.8 0 1 1-3.6 0v-.2a1.5 1.5 0 0 0-2.7-1.1l-.1.1a1.8 1.8 0 1 1-2.6-2.6l.1-.1a1.5 1.5 0 0 0-1.1-2.6h-.3a1.8 1.8 0 1 1 0-3.6h.2a1.5 1.5 0 0 0 1.1-2.7l-.1-.1a1.8 1.8 0 1 1 2.6-2.6l.1.1a1.5 1.5 0 0 0 1.7.3h.1a1.5 1.5 0 0 0 .9-1.4v-.3a1.8 1.8 0 1 1 3.6 0v.2a1.5 1.5 0 0 0 2.6 1.1l.1-.1a1.8 1.8 0 1 1 2.6 2.6l-.1.1a1.5 1.5 0 0 0-.3 1.7v.1a1.5 1.5 0 0 0 1.4.9h.3a1.8 1.8 0 1 1 0 3.6h-.2a1.5 1.5 0 0 0-1.4.9Z"/></svg>
+    </button>
+  </header>
+
+  <main class="stage">
+
+    <!-- ── WRITE ────────────────────────────────────────────── -->
+    <section class="view view-write" id="view-write">
+      <div class="write-sheet">
+        <div class="today">
+          <p class="today-weekday" id="wWeekday">Friday</p>
+          <h1 class="today-date" id="wDate">10 April, <b>2026</b></h1>
+          <p class="today-time" id="wTime">08:42 AM</p>
+        </div>
+
+        <div class="compose">
+          <label class="sr-only" for="entryText">Your sentence for today</label>
+          <textarea id="entryText" maxlength="160" rows="3" spellcheck="true"
+            placeholder="&ldquo;One sentence is a world contained in a single breath.&rdquo;"></textarea>
+          <span class="counter" id="counter">160</span>
+        </div>
+
+        <button class="cta" id="saveBtn">
+          <span id="saveLabel">Save Entry</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h15M13.5 6.5 20 12l-6.5 5.5"/></svg>
+        </button>
+
+        <p class="write-note" id="writeNote" hidden></p>
+      </div>
+    </section>
+
+    <!-- ── CALENDAR ─────────────────────────────────────────── -->
+    <section class="view view-calendar" id="view-calendar" hidden>
+      <div class="cal-col">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Archived moments</p>
+            <h1 class="month-title" id="calMonth">October</h1>
+          </div>
+          <div class="month-nav">
+            <button class="round-btn" id="calPrev" aria-label="Previous month">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 9 12l5.5 5.5"/></svg>
+            </button>
+            <button class="round-btn" id="calNext" aria-label="Next month">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5 15 12l-5.5 5.5"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <div class="card calendar">
+          <div class="dow" aria-hidden="true">
+            <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+          </div>
+          <div class="grid" id="calGrid" role="grid" aria-label="Month"></div>
+        </div>
+      </div>
+
+      <div class="cal-col">
+        <p class="eyebrow spaced">Selected date entry</p>
+        <div id="calDetail"></div>
+      </div>
+    </section>
+
+    <!-- ── JOURNAL ──────────────────────────────────────────── -->
+    <section class="view view-journal" id="view-journal" hidden>
+      <div class="search">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="6.2"/><path d="m15.6 15.6 4 4"/></svg>
+        <input id="search" type="search" placeholder="Search your thoughts..." autocomplete="off">
+      </div>
+
+      <div class="toolbar">
+        <div class="segmented" role="group" aria-label="Sort order">
+          <button class="seg on" data-sort="desc">Latest First</button>
+          <button class="seg" data-sort="asc">Oldest First</button>
+        </div>
+        <button class="filter-btn" id="filterBtn" aria-expanded="false">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M7 12h10M10 17h4"/></svg>
+          <span id="filterLabel">Filter</span>
+        </button>
+      </div>
+
+      <div class="filter-menu" id="filterMenu" hidden>
+        <button data-range="all" class="on">All time</button>
+        <button data-range="30">Last 30 days</button>
+        <button data-range="year">This year</button>
+        <button data-range="month">This month</button>
+      </div>
+
+      <div id="feed" class="feed"></div>
+      <div id="sentinel" class="sentinel" aria-hidden="true"></div>
+      <p class="feed-end" id="feedEnd" hidden>You&rsquo;ve reached the beginning.</p>
+    </section>
+
+  </main>
+
+  <!-- ── bottom nav (mobile) ────────────────────────────────── -->
+  <nav class="tabbar" aria-label="Sections">
+    <button class="tab on" data-nav="write" aria-label="Write">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 7h9M3 12h6M3 17h5"/><path d="M20.4 8.6 13 16l-3.2.8L10.6 13.6 18 6.2a1.7 1.7 0 0 1 2.4 2.4Z"/></svg>
+    </button>
+    <button class="tab" data-nav="calendar" aria-label="Calendar">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3.5" y="5" width="17" height="15.5" rx="2.6"/><path d="M3.5 9.6h17M8 3.4v3.2M16 3.4v3.2"/></svg>
+    </button>
+    <button class="tab" data-nav="journal" aria-label="Journal">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 6.6C10.3 5.3 8.3 4.7 5.6 4.7a1 1 0 0 0-1.1 1v11.5a1 1 0 0 0 1.1 1c2.7 0 4.7.6 6.4 1.9 1.7-1.3 3.7-1.9 6.4-1.9a1 1 0 0 0 1.1-1V5.7a1 1 0 0 0-1.1-1c-2.7 0-4.7.6-6.4 1.9Z"/><path d="M12 6.6v12.5"/></svg>
+    </button>
+  </nav>
+</div>
+
+<!-- ── settings ─────────────────────────────────────────────── -->
+<div class="scrim" id="scrim" hidden></div>
+<div class="sheet" id="settings" role="dialog" aria-modal="true" aria-label="Settings" hidden>
+  <div class="sheet-grab" aria-hidden="true"></div>
+  <h2>Settings</h2>
+
+  <div class="row">
+    <div><strong>Entries</strong><small id="statLine">No entries yet</small></div>
+  </div>
+
+  <div class="row" id="installRow" hidden>
+    <div><strong>Install Abridged</strong><small>Add it to your home screen or dock</small></div>
+    <button class="ghost" id="installBtn">Install</button>
+  </div>
+
+  <div class="row">
+    <div><strong>Export</strong><small>Download every entry as JSON</small></div>
+    <button class="ghost" id="exportBtn">Export</button>
+  </div>
+
+  <div class="row">
+    <div><strong>Import</strong><small>Restore from an exported file</small></div>
+    <button class="ghost" id="importBtn">Import</button>
+    <input type="file" id="importFile" accept="application/json" hidden>
+  </div>
+
+  <div class="row">
+    <div><strong>Sample entries</strong><small>Fill a few months to explore the prototype</small></div>
+    <button class="ghost" id="seedBtn">Add</button>
+  </div>
+
+  <div class="row danger">
+    <div><strong>Erase everything</strong><small>This cannot be undone</small></div>
+    <button class="ghost warn" id="wipeBtn">Erase</button>
+  </div>
+
+  <button class="cta subtle" id="settingsClose">Done</button>
+</div>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="app.js?v=7"></script>
+</body>
+</html>
