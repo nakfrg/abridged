@@ -1,15 +1,18 @@
 /* Abridged service worker — stale-while-revalidate app shell, offline-capable. */
 /* Bump VERSION and the ?v= query in index.html together whenever app.css/app.js change. */
-const VERSION = 'abridged-v9';
+const VERSION = 'abridged-v11';
 const SHELL = [
   './',
   './index.html',
   './app.css?v=9',
   './app.js?v=9',
   './manifest.webmanifest',
-  './icons/icon-180.png',
-  './icons/icon-192.png',
-  './icons/icon-512.png',
+  './icons/mark-96.png?v=11',
+  './icons/icon-180.png?v=11',
+  './icons/icon-192.png?v=11',
+  './icons/icon-512.png?v=11',
+  './icons/icon-192-maskable.png?v=11',
+  './icons/icon-512-maskable.png?v=11',
 ];
 
 self.addEventListener('install', (e) => {
